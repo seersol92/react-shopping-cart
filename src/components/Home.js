@@ -6,6 +6,7 @@ import {
   } from 'react-router-dom'
 import { connect } from 'react-redux';
 import * as actions from './../store/actions/index';
+import './Home.css'
 
 class Home extends Component {
 
@@ -16,7 +17,9 @@ class Home extends Component {
     render() { 
         return ( 
             <div>
-                <h3>Products</h3>
+                <div className="page-header">
+                    <h3>Products</h3>
+                </div>
                 <div className="row">
                 { this.props.products.map(item => (
                     <div className="col-lg-3 col-md-6 col-sm-12">
@@ -31,7 +34,7 @@ class Home extends Component {
                                         <i className="fa fa-plus" ></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" />
+                                <input type="text" class="form-control" placeholder="" />
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-danger" type="button">
                                         <i className="fa fa-minus" ></i>
@@ -40,7 +43,9 @@ class Home extends Component {
                                 </div>
                             </div>
                             <div className="card-footer text-muted">
-                                2 days ago
+                                <button class="btn btn-outline-success btn-block" type="button" >
+                                    <i className="fa fa-shopping-cart" ></i> &nbsp;Add To Cart
+                                </button>
                             </div>
                         </div>
                     </div>

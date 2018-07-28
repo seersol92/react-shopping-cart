@@ -1,0 +1,28 @@
+.page-header {
+    width:100%;
+    text-align:center; 
+    position: relative;
+    margin-bottom: 1rem
+ }
+ 
+ .page-header > h3 {
+    font-size: 20px;
+    position:relative; 
+    padding:10px; 
+    color: #ffff;
+    text-transform : uppercase;
+    background: #02B875;
+    display: inline-block;
+    z-index: 1;
+ }
+ 
+ .page-header::after {
+    content:'';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: #02B875;
+    z-index:0;
+ }
