@@ -14,6 +14,14 @@ class Home extends Component {
         this.props.onHardRefresh();
     }
 
+    incrementQty(index) {
+        alert(index)
+    }
+
+    decrementQty(index) {
+        alert(index)
+    }
+
     render() { 
         return ( 
             <div>
@@ -21,7 +29,7 @@ class Home extends Component {
                     <h3>Products</h3>
                 </div>
                 <div className="row">
-                { this.props.products.map(item => (
+                { this.props.products.map((item, index) => (
                     <div className="col-lg-3 col-md-6 col-sm-12">
                         <div className="card mb-3">
                             <h4 className="card-header">{item.name}</h4>
@@ -30,13 +38,13 @@ class Home extends Component {
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-outline-success" type="button">
+                                    <button class="btn btn-outline-success" type="button" onClick={() => this.incrementQty(index)}>
                                         <i className="fa fa-plus" ></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control" placeholder="" />
+                                <input type="text" class="form-control" placeholder="Pick Quantity" value="1" />
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-danger" type="button">
+                                    <button class="btn btn-outline-danger" type="button" onClick={ () => this.decrementQty(index)}>
                                         <i className="fa fa-minus" ></i>
                                     </button>
                                 </div>

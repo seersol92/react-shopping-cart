@@ -1,16 +1,17 @@
-.page-header {
+
+ .page-header {
     width:100%;
     text-align:center; 
     position: relative;
-    margin-bottom: 1rem
  }
  
- .page-header > h3 {
-    font-size: 20px;
+ .page-header h3 {
     position:relative; 
     padding:10px; 
-    color: #ffff;
-    text-transform : uppercase;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    color:#ffff;
     background: #02B875;
     display: inline-block;
     z-index: 1;
@@ -25,4 +26,12 @@
     height: 1px;
     background: #02B875;
     z-index:0;
+ }
+ .card-header {
+     text-align: center;
+     font-size: 19px;
+ }
+
+ .card-body .form-control {
+     text-align: center
  }
