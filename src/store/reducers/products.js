@@ -19,11 +19,16 @@ const failedFetchingProduct = (state, action) => {
     return updateObject( state, { error: action.error, loading: true } );    
 }
 
+const updated = (state, action) => {
+    return updateObject( state,  { products: action.data ,error: null, loading: true } );
+}
+
 const productReducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.PRODUCT_FETCHING_START: return startFetchingProduct(state, action);
         case actionTypes.PRODUCT_FETCHED_DONE: return productsFetched(state, action);
         case actionTypes.PRODUCT_FETCHING_FAILED: return failedFetchingProduct(state, action);
+        case actionTypes.QUANTITY_UPDATED: return updated(state, action);
         default:
             return state;
     }

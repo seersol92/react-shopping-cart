@@ -38,3 +38,68 @@ export const fetchProduct = () => {
         }
     }
 }
+
+export const updateQty = (products) => {
+    return {
+        type: actionTypes.QUANTITY_UPDATED,
+        data: products
+    }
+}
+
+export const quantityIncrement = (index) => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.QUANTITY_UPDATE_START
+        });
+
+        let NewProducts = Products.slice();
+       
+        let product = NewProducts[index];
+        if (product) {
+            let selectedQuantity = product.selectedQty
+           if (selectedQuantity < product.qty) {
+            NewProducts[index].selectedQty +=1;
+            dispatch(updateQty(NewProducts)); 
+           }   else {
+            dispatch({
+                type: actionTypes.QUANTITY_UPDATE_FAILED,
+                error: 'Product is out of stock'
+            });
+           }      
+        } else {
+            dispatch({
+                type: actionTypes.PRODUCT_FETCHING_FAILED,
+                error: 'Product Not Found!!'
+            });
+        }
+    }
+}
+
+export const quantityDecrement = (index) => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.QUANTITY_UPDATE_START
+        });
+
+        let NewProducts = Products.slice();
+       
+        let product = NewProducts[index];
+        if (product) {
+            let selectedQuantity = product.selectedQty
+           if (selectedQuantity > 1) {
+            NewProducts[index].selectedQty -=1;
+            dispatch(updateQty(NewProducts)); 
+           }   else {
+            dispatch({
+                type: actionTypes.QUANTITY_UPDATE_FAILED,
+                error: 'You can not decrement quantity!!'
+            });
+           }      
+        } else {
+            dispatch({
+                type: actionTypes.PRODUCT_FETCHING_FAILED,
+                error: 'Product Not Found!!'
+            });
+        }
+    }
+}
