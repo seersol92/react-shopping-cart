@@ -20,7 +20,7 @@ const failedFetchingProduct = (state, action) => {
 }
 
 const updated = (state, action) => {
-    return updateObject( state,  { products: action.data ,error: null, loading: true } );
+    return updateObject( state,  { products: action.data ,error: action.error, loading: false } );
 }
 
 const productReducer = ( state = initialState, action ) => {

@@ -20,13 +20,24 @@ class Home extends Component {
         this.props.onQtyDecrement(index)
     }
 
+    onCartClick = (index) => {
+        this.props.onAddToCart(index);
+    }
+
     render() { 
+        const styleAvailable = {
+            color: 'green'
+        }
+
+        const styleNotAvailable = {
+            color: 'red'
+        }
+
         return ( 
             <div>
                 <div className="page-header">
                     <h3>Products</h3>
-                    {JSON.stringify(this.props.products)}
-                </div>
+]                </div>
                 <div className="row">
                 { this.props.products.map((item, index) => (
                     <div className="col-lg-3 col-md-6 col-sm-12">
@@ -38,7 +49,7 @@ class Home extends Component {
                             />
                             <div className="card-body">
                                 <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-1">
                                 <div class="input-group-prepend">
                                     <button 
                                     type="button" 
@@ -60,9 +71,16 @@ class Home extends Component {
                                     </button>
                                 </div>
                                 </div>
+                                <div className="text-center" style={item.qty-item.selectedQty !== 0 ? styleAvailable : styleNotAvailable}>
+                                    <small>({(item.qty-item.selectedQty)}) Available</small>
+                                </div>
                             </div>
                             <div className="card-footer text-muted">
-                                <button class="btn btn-outline-success btn-block" type="button" >
+                                <button 
+                                onClick={ () => this.onCartClick(index)}
+                                type="button"
+                                class="btn btn-outline-success btn-block" 
+                                 >
                                     <i className="fa fa-shopping-cart" ></i> &nbsp;Add To Cart
                                 </button>
                             </div>
@@ -80,7 +98,8 @@ const mapDispatchToProps = dispatch => {
     return {
       onHardRefresh:  ()      => dispatch( actions.fetchProduct() ),
       onQtyIncrement: (index) => dispatch(actions.quantityIncrement(index)),
-      onQtyDecrement: (index) => dispatch(actions.quantityDecrement(index))
+      onQtyDecrement: (index) => dispatch(actions.quantityDecrement(index)),
+      onAddToCart:    (index) => dispatch(actions.quantityDecrement(index)),
     };
   };
   
