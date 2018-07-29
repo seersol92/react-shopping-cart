@@ -96,7 +96,7 @@ class Home extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-      onHardRefresh:  ()      => dispatch( actions.fetchProduct() ),
+      onHardRefresh:  ()      => dispatch(actions.fetchProduct()),
       onQtyIncrement: (index) => dispatch(actions.quantityIncrement(index)),
       onQtyDecrement: (index) => dispatch(actions.quantityDecrement(index)),
       onAddToCart:    (index) => dispatch(actions.quantityDecrement(index)),
