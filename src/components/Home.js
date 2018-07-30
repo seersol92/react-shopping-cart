@@ -3,6 +3,7 @@ import {
     withRouter
   } from 'react-router-dom'
 import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import * as actions from './../store/actions/index';
 import './Home.css'
  
@@ -12,12 +13,22 @@ class Home extends Component {
         this.props.onHardRefresh();
     }
 
+    errorToaster () {
+        if (this.props.error !== null) {
+             toast.dismiss(); // dismiss all 
+             toast.info(this.props.error)
+        }
+    }
+
     incrementQty(index) {
         this.props.onQtyIncrement(index);
+        this.errorToaster();
     }
 
     decrementQty(index) {
         this.props.onQtyDecrement(index)
+        this.errorToaster();
+
     }
 
     onCartClick = (index) => {
@@ -32,7 +43,7 @@ class Home extends Component {
         const styleNotAvailable = {
             color: 'red'
         }
-
+       
         return ( 
             <div>
                 <div className="page-header">
@@ -65,6 +76,7 @@ class Home extends Component {
                                     <button 
                                     type="button" 
                                     class="btn btn-outline-danger" 
+                                    disabled={item.selectedQty=== 1 }
                                     onClick={ () => this.decrementQty(index)}>
                                         <i className="fa fa-minus" ></i>
                                     </button>

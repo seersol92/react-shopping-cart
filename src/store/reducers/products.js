@@ -4,7 +4,8 @@ import {  updateObject } from '../utility';
 const initialState = {
     error: null,
     products: [],
-    loading: false
+    loading: false,
+    message:null
 };
 
 const startFetchingProduct = (state, action) => {

@@ -5,6 +5,8 @@ import {
 } from 'react-router-dom'
 import Routes from './routes/Router'
 import Layout from './layout/Layout';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   render() {
@@ -22,6 +24,7 @@ class App extends Component {
             />
             ))
           }
+           <ToastContainer />
           </Layout>
         </div>
       </Router>
