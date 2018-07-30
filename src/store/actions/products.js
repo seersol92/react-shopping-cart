@@ -1,5 +1,7 @@
 import * as actionTypes from './actionTypes'
-import Products from './../../meta/products'
+import {
+    fetchProducts
+} from './../../services/api'
 
 export const startFetchingProduct = () => {
     return {
@@ -29,77 +31,33 @@ export const productFetchingFailed = (error) => {
 
 
 export const fetchProduct = () => {
-    return dispatch => {
-        dispatch(productFetchingStart());
-        if (Products) {
-            dispatch(productFetched(Products));            
-        } else {
+    return async dispatch => {
+        try {
+            // call the API
+            const products = await fetchProducts();
+            // dispatch a success action if it works
+            dispatch(productFetched(products));
+        } catch (err) {
+            // dispatch a fail action if API call fails
             dispatch(productFetchingFailed('Unable to fetch products!!'));
+            // reject the promise
+            return Promise.reject();
         }
-    }
-}
-
-export const updateQty = (products) => {
-    return {
-        type: actionTypes.QUANTITY_UPDATED,
-        data: products
     }
 }
 
 export const quantityIncrement = (index) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.QUANTITY_UPDATE_START
-        });
 
-        let NewProducts = Products.slice();
-       
-        let product = NewProducts[index];
-        if (product) {
-            let selectedQuantity = product.selectedQty
-           if (selectedQuantity < product.qty) {
-            NewProducts[index].selectedQty +=1;
-            dispatch(updateQty(NewProducts)); 
-           }   else {
-            dispatch({
-                type: actionTypes.QUANTITY_UPDATE_FAILED,
-                error: 'Product is out of stock'
-            });
-           }      
-        } else {
-            dispatch({
-                type: actionTypes.PRODUCT_FETCHING_FAILED,
-                error: 'Product Not Found!!'
-            });
-        }
+    return {
+        type: actionTypes.QUANTITY_INCREMENT,
+        product_index: index
     }
 }
 
 export const quantityDecrement = (index) => {
-    return dispatch => {
-        dispatch({
-            type: actionTypes.QUANTITY_UPDATE_START
-        });
 
-        let NewProducts = Products.slice();
-       
-        let product = NewProducts[index];
-        if (product) {
-            let selectedQuantity = product.selectedQty
-           if (selectedQuantity > 1) {
-            NewProducts[index].selectedQty -=1;
-            dispatch(updateQty(NewProducts)); 
-           }   else {
-            dispatch({
-                type: actionTypes.QUANTITY_UPDATE_FAILED,
-                error: 'You can not decrement quantity!!'
-            });
-           }      
-        } else {
-            dispatch({
-                type: actionTypes.PRODUCT_FETCHING_FAILED,
-                error: 'Product Not Found!!'
-            });
-        }
+    return {
+        type: actionTypes.QUANTITY_DECREMENT,
+        product_index: index
     }
 }

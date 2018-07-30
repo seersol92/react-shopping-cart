@@ -37,7 +37,7 @@ class Home extends Component {
             <div>
                 <div className="page-header">
                     <h3>Products</h3>
-]                </div>
+                </div>
                 <div className="row">
                 { this.props.products.map((item, index) => (
                     <div className="col-lg-3 col-md-6 col-sm-12">
@@ -64,7 +64,6 @@ class Home extends Component {
                                 <div class="input-group-append">
                                     <button 
                                     type="button" 
-                                    disabled={item.selectedQty=== 1 }
                                     class="btn btn-outline-danger" 
                                     onClick={ () => this.decrementQty(index)}>
                                         <i className="fa fa-minus" ></i>
