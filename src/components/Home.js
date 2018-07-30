@@ -31,8 +31,8 @@ class Home extends Component {
 
     }
 
-    onCartClick = (index) => {
-        this.props.onAddToCart(index);
+    onCartClick = (id) => {
+        this.props.onAddToCart(id);
     }
 
     render() { 
@@ -88,7 +88,7 @@ class Home extends Component {
                             </div>
                             <div className="card-footer text-muted">
                                 <button 
-                                onClick={ () => this.onCartClick(index)}
+                                onClick={ () => this.onCartClick(item.id)}
                                 type="button"
                                 class="btn btn-outline-success btn-block" 
                                  >
@@ -110,7 +110,7 @@ const mapDispatchToProps = dispatch => {
       onHardRefresh:  ()      => dispatch(actions.fetchProduct()),
       onQtyIncrement: (index) => dispatch(actions.quantityIncrement(index)),
       onQtyDecrement: (index) => dispatch(actions.quantityDecrement(index)),
-      onAddToCart:    (index) => dispatch(actions.quantityDecrement(index)),
+      onAddToCart:    (id)    => dispatch(actions.addToCart(id)),
     };
   };
   

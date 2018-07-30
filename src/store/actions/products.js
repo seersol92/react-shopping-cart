@@ -1,7 +1,5 @@
 import * as actionTypes from './actionTypes'
-import {
-    fetchProducts
-} from './../../services/api'
+import { fetchProducts } from './../../services/api'
 
 export const startFetchingProduct = () => {
     return {
