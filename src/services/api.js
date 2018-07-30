@@ -14,8 +14,11 @@ export const fetchProducts = () => {
 
 
 export const fetchProduct = (id) => {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     const product = Products.find( item => item.id === id );
-    return resolve(product);
+    if (product)
+        return resolve(product);
+    else 
+        return reject('Product Not Found!!')
   })
 }

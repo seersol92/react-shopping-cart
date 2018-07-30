@@ -16,8 +16,18 @@ const initializingCart = (state, action) => {
 }
 
 const productAdded = (state, action) => {
+    const product = action.product;
+    const cartProducts = state.product;
+    const checkExistence = cartProducts.find( item => item.id === product.id );
+
+    if (typeof checkExistence !== 'undefined') { // exist
+        
+    } else {
+        cartProducts.push(product)
+    }
+
     return updateObject(state, {
-        products: action.data,
+        product: cartProducts,
         error: null,
         loading: false
     });
@@ -32,7 +42,7 @@ const addToCartProcessFailed = (state, action) => {
 
 
 
-const productReducer = (state = initialState, action) => {
+const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.INITIALIZE_ADD_PRODUCT_TO_CART:
             return initializingCart(state, action);
@@ -49,4 +59,4 @@ const productReducer = (state = initialState, action) => {
     }
 };
 
-export default productReducer;
+export default cartReducer;

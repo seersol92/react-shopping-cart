@@ -20,10 +20,10 @@ class NavBar extends Component {
                         <NavLink className="nav-link" to={'/register'} activeClassName="active">Register</NavLink>
                     </li>
                     <li className="nav-item">
-                        <button className="btn btn-success">
-                        <i className="fa fa-shopping-cart"></i>
-                            <span class="badge badge-pill badge-light ml-1">4</span>
-                        </button>
+                        <NavLink className="nav-link" to={'/cart'} activeClassName="active">
+                            <i className="fa fa-shopping-cart"></i>
+                            <span class="badge badge-pill badge-success ml-1">4</span>
+                        </NavLink>
                     </li>
                     </ul>
                 </div>

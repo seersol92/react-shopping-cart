@@ -11,7 +11,7 @@ export const   initializeCart = () => {
 export const productAddedToCart = (data) => {
     return {
         type: actionTypes.PRODUCT_ADDED_IN_CART,
-        cart: data
+        product: data
     }
 }
 
@@ -30,12 +30,10 @@ export const addToCart = (id) => {
 
             const product =await fetchProduct(id);
             dispatch(productAddedToCart(product))
-            console.log(product);
 
         } catch(err) {
 
             dispatch(addToCartFailed(err))
-            console.log(err)
             return Promise.reject();
         }
     }
