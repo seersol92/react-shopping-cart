@@ -15,6 +15,10 @@ class Cart extends Component {
         return ( 
             <div>
                 <div className="mt-5">
+                <div className="page-header">
+                    <h3>My Cart</h3>
+                </div>
+                { this.props.product.length > 0 ? 
                     <table id="cart" className="table table-hover table-sm">
                         <thead>
                             <tr>
@@ -59,6 +63,11 @@ class Cart extends Component {
                             </tr>
                         </tfoot>
                     </table>
+                    : 
+                    <div class="alert alert-dismissible alert-secondary">
+                            <strong>Well done!</strong> Your cart is empty!!.
+                    </div>
+                    }
                 </div>
             </div>
          );

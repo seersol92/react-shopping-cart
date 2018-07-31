@@ -22,6 +22,13 @@ const productAdded = (state, action) => {
 
     if (typeof checkExistence !== 'undefined') { // exist
         
+    const index  = cartProducts.map( (item, index) => {
+        if (item => item.id === product.id) {
+            return index
+        }
+    })
+    alert(index)
+        cartProducts[index].selectedQty += product.selectedQty 
     } else {
         cartProducts.push(product)
     }
