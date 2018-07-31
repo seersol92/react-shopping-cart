@@ -65,7 +65,7 @@ class Cart extends Component {
                     </table>
                     : 
                     <div class="alert alert-dismissible alert-secondary">
-                            <strong>Well done!</strong> Your cart is empty!!.
+                            <strong> <i className="fa fa-hand-o-right" aria-hidden="true"></i> Your cart is empty!!.</strong>
                     </div>
                     }
                 </div>

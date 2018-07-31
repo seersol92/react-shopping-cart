@@ -4,6 +4,7 @@
         "name": "I-phone",
         "qty": 5,
         "image": "",
+        "price": 50,
         "selectedQty": 1
 
     },
@@ -12,6 +13,7 @@
         "name": "Samsung",
         "qty": 100,
         "image": "",
+        "price": 20,
         "selectedQty": 1
 
     },
@@ -20,6 +22,7 @@
         "name": "Xiomi",
         "qty": 100,
         "image": "",
+        "price": 100,
         "selectedQty": 1
 
     },
@@ -28,6 +31,7 @@
         "name": "Nokia",
         "qty": 100,
         "image": "",
+        "price": 250,
         "selectedQty": 1
 
     },    
@@ -36,6 +40,7 @@
         "name": "LG",
         "qty": 100,
         "image": "",
+        "price": 90,
         "selectedQty": 1
 
     }

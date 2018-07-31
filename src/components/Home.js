@@ -59,7 +59,9 @@ class Home extends Component {
                             alt={item.name}
                             />
                             <div className="card-body">
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p className="card-text">
+                                    <strong>Price: {item.price} $</strong>
+                                </p>
                                 <div class="input-group mb-1">
                                 <div class="input-group-prepend">
                                     <button 
