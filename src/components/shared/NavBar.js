@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import {
+    withRouter
+  } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import * as actions from './../../store/actions/index';
+
 
 class NavBar extends Component {
     render() { 
@@ -22,7 +28,9 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <NavLink className="nav-link" to={'/cart'} activeClassName="active">
                             <i className="fa fa-shopping-cart"></i>
-                            <span class="badge badge-pill badge-success ml-1">4</span>
+                            <span class="badge badge-pill badge-success ml-1">
+                            { this.props.product.length }
+                            </span>
                         </NavLink>
                     </li>
                     </ul>
@@ -32,4 +40,19 @@ class NavBar extends Component {
     }
 }
  
-export default NavBar;
+
+const mapDispatchToProps = dispatch => {
+    return {
+      onAddToCart:    (id)    => dispatch(actions.addToCart(id))
+    };
+  };
+  
+  const mapStateToProps = state => {
+    return {
+        loading: state.cart.loading,
+        error: state.cart.error,
+        product: state.cart.product
+    };
+  };
+  
+  export default withRouter(connect( mapStateToProps, mapDispatchToProps )( NavBar ));

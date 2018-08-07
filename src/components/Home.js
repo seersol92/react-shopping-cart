@@ -60,7 +60,7 @@ class Home extends Component {
                             />
                             <div className="card-body">
                                 <p className="card-text">
-                                    <strong>Price: {item.price} $</strong>
+                                    <strong>Price: {item.price}$</strong>
                                 </p>
                                 <div class="input-group mb-1">
                                 <div class="input-group-prepend">
